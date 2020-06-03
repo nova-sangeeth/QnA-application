@@ -40,12 +40,18 @@ INSTALLED_APPS = [
     # applications_created
 
     'app_main',
+    'app_pages',
+    'app_questions',
+    'app_users',
 
     # all_auth module
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+
+    # django_forms
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
