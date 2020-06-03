@@ -10,9 +10,15 @@
     {% block content %}
 
     <div class="container">
+      {% if user.is_authenticated %}
       <p class="display-4">
-        Hello There this app works. {{ user.username }}
+        The user is : {{ user.username }}
       </p>
+      {% else %}
+      <p class="display-4">
+        Hello there!!
+      </p>
+      {% endif %}
     </div>
 
     {% endblock content %}
