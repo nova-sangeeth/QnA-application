@@ -4,4 +4,4 @@ from django.contrib.auth.models import User
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'application/index.html')
