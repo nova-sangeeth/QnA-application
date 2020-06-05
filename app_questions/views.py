@@ -59,3 +59,26 @@ def question(request):
                       'asked_by_user': asked_by_user
                   }
                   )
+
+
+def new(request):
+    current_user = request.user
+    if not current_user.is_authenticated:
+        return HttpResponseRedirect(reverse('account_signup'))
+
+    if request.method != 'POST':
+        render(request, 'new.html', {'current_user': current_user})
+
+    form = Question_form(request.POST)
+    if not form.is_valid():
+        return render(request, 'new.html', {'current_user': current_user}),
+
+# cleaning the question input given by the user. and redirect to the main page after the saving it.
+    q = Question(
+        user_id=current_user.id,
+        title=form.cleaned_data['title'],
+        body=form.cleaned_data['body']
+    )
+
+    q.save()
+    return HttpResponseRedirect('/')
