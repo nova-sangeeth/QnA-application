@@ -82,3 +82,23 @@ def new(request):
 
     q.save()
     return HttpResponseRedirect('/')
+
+
+def answer(request, id):
+    current_user = request.user
+    if not current_user.is_authenticated:
+        return HttpResponseRedirect('/accounts/login')
+    if not request.method == "POST":
+        return HttpResponseRedirect(f'/question/{id}')
+    form = Answer_form(request.POST)
+    if not form.is_valid():
+        return HttpResponseRedirect(f'/question/{id}')
+
+    a = Answer(
+        user_id=current_user.id,
+        question_id=id,
+        text=form.cleaned_data['text']
+    )
+    a.save()
+    return HttpResponseRedirect(f'/question/{id}')
+
