@@ -9,4 +9,4 @@ class Question_form(forms.Form):
 
 
 class Answer_form(forms.Form):
-    text = forms.CharField(maxlenght=2500, widget=forms.Textarea)
+    text = forms.CharField(max_length=2500, widget=forms.Textarea)
