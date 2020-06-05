@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.urls import reverse
-from QnA_app.app_main.models import Question, Answer
-from QnA_app.app_main.forms import Question_form, Answer_form
+from main.models import Question, Answer
+from main.forms import Question_form, Answer_form
 
 # updating a vote when given.
 # added upvote and downvote funcs.

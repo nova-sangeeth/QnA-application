@@ -39,10 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # applications_created
 
-    'app_main',
-    'app_pages',
-    'app_questions',
-    'app_users',
+    'main',
+    'pages',
+    'questions',
+    'users',
 
     # all_auth module
     'django.contrib.sites',
@@ -151,3 +151,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STAICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+AUTH_USER_MODEL = 'users.User'
