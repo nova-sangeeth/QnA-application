@@ -102,3 +102,28 @@ def answer(request, id):
     a.save()
     return HttpResponseRedirect(f'/question/{id}')
 
+
+def my_answer(request):
+    current_user = request.user
+    answers = Answer.objects.filter(
+        user_id=current_user.id).order_by('-created')
+    answers_exist = len(answers) > 0
+    return render(request, 'my_answer.html',
+                  {
+                      'current_user': current_user,
+                      'answers': answers,
+                      'answers_exists': answers_exist
+                  })
+
+
+def my_question(request):
+    current_user = request.user
+    questions = Question.objects.filter(
+        user_id=current_user).order_by('-created')
+    questions_exist = len(questions) > 0
+    return render(request, 'my_question.html',
+                  {
+                      'current_user': current_user,
+                      'questions': questions,
+                      'questions_exist': questions_exist
+                  })
