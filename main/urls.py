@@ -8,3 +8,4 @@ urlpatterns = [
     url(r'^test$', test_view, name='test_view'),
     url(r'^home$', home_feed, name='home_feed')
 ]
+
