@@ -1,16 +1,16 @@
 from django.db import models, models
 from django.contrib.auth.models import User
 from django.conf import settings
-from django .utils import timezone
+from django.utils import timezone
 from .helpers import x_ago_helper
 from django.utils.datetime_safe import time
+
 # Create your models here.
 
 
 class Question(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,
-                             on_delete=models.CASCADE)
-    title = models. CharField(max_length=256, null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    title = models.CharField(max_length=256, null=True)
     body = models.TextField(blank=True, null=True)
     created = models.DateTimeField()
     modified = models.DateTimeField
@@ -20,13 +20,14 @@ class Question(models.Model):
     def num_answers(self):
         answers = Answer.objects.filter(question_id=self.id)
         return len(answers)
-# writing a method to show how long ago the post was put up.
+
+    # writing a method to show how long ago the post was put up.
 
     def x_ago(self):
         diff = time.now() - self.created
         return x_ago_helper(diff)
 
-# showing points to the user
+    # showing points to the user
     def show_points(self):
         if self.points < 0:
             return 0
@@ -45,6 +46,7 @@ class Question(models.Model):
         if not self.id:
             self.created = timezone.now()
         self.modified = timezone.now()
+        return super(Question, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
@@ -52,8 +54,7 @@ class Question(models.Model):
 
 class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,
-                             on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     text = models.TextField()
     created = models.DateTimeField(editable=False)
     modified = models.DateTimeField()

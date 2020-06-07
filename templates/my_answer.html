@@ -1,21 +1,21 @@
-<!DOCTYPE html>
-{% extends 'base.html' %}
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    {% block content %}
-    <div class="container">
-        <p class="leads">
-            My answer page .
-        </p>
+{% block content %}
+<div class="answers">
+    {% for answer in answers %}
+    <p style="margin-bottom: 1">
+        <a href="/question/{{answer.question.id}}">{{ answer.question.title }} <span
+                class="text-secondary num-answers">({{ answer.question.num_answers }} comments)</span></a>
+    </p>
+    <div class='answer-block'>
+        <div class='text-secondary' style="font-size: 14px">{{ answer.user }}<span
+                style="margin-right: 6px; margin-left: 6px;">|</span></span>{{ answer.x_ago }}</div>
+        <div style="margin-bottom: 20px">{{ answer.text | urlize }}</div>
     </div>
-    {% endblock content %}
-</body>
-
-</html>
+    <hr />
+    {% endfor %}
+</div>
+{% if not answers_exist %}
+<p>You haven't answered any questions yet.</p>
+{% endif %}
+{% endblock %}
