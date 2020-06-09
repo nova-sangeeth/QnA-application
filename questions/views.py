@@ -32,7 +32,7 @@ def vote(request, id):
     return HttpResponseRedirect(f"/question/{id}")
 
 
-def question(request):
+def question(request, id):
     current_user = request.user
     question = Question.objects.get(pk=id)
     answers = Answer.objects.filter(question_id=id).order_by("created")
@@ -55,6 +55,7 @@ def question(request):
         "question.html",
         {
             "question": question,
+            "answers": answers,
             "current_user": current_user,
             "upvoted": upvoted,
             "downvoted": downvoted,
@@ -73,7 +74,7 @@ def new(request):
 
     form = Question_form(request.POST)
     if not form.is_valid():
-        return (render(request, "new.html", {"current_user": current_user}),)
+        return render(request, "new.html", {"current_user": current_user})
 
     # cleaning the question input given by the user. and redirect to the main page after the saving it.
     q = Question(
