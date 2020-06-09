@@ -56,7 +56,7 @@ class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     text = models.TextField()
-    created = models.DateTimeField(editable=False)
+    created = models.DateTimeField(editable=False, null=True)
     modified = models.DateTimeField()
 
     def x_ago(self):
