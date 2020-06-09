@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from django.urls import reverse
 from main.models import Question, Answer
 from main.forms import Question_form, Answer_form
@@ -34,7 +34,7 @@ def vote(request, id):
 
 def question(request, id):
     current_user = request.user
-    question = Question.objects.get(pk=id)
+    question = get_object_or_404(Question, pk=id)
     answers = Answer.objects.filter(question_id=id).order_by("created")
     upvoted = None
     downvoted = None
