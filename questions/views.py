@@ -36,7 +36,6 @@ def question(request, id):
     current_user = request.user
     question = Question.objects.get(pk=id)
     answers = Answer.objects.filter(question_id=id).order_by("created")
-    # declare the variables as null so it can be changed further down the process.
     upvoted = None
     downvoted = None
     asked_by_user = False
@@ -83,7 +82,7 @@ def new(request):
     )
 
     q.save()
-    return HttpResponseRedirect("home_feed")
+    return HttpResponseRedirect("/")
 
 
 def answer(request, id):
