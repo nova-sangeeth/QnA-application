@@ -76,7 +76,6 @@ def new(request):
     if not form.is_valid():
         return render(request, "new.html", {"current_user": current_user})
 
-    # cleaning the question input given by the user. and redirect to the main page after the saving it.
     q = Question(
         user_id=current_user.id,
         title=form.cleaned_data["title"],
@@ -84,7 +83,7 @@ def new(request):
     )
 
     q.save()
-    return HttpResponseRedirect("/")
+    return HttpResponseRedirect("home_feed")
 
 
 def answer(request, id):

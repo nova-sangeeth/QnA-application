@@ -15,12 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from questions.views import Question, Answer, vote, new, my_answer, my_question
+from main.views import home_feed, index, listing, test_view
+from pages.views import about_page
 
 urlpatterns = [
-    path("accounts/", include("allauth.urls")),
     path("admin/", admin.site.urls),
-    path("", include("main.urls")),
-    path("pages/", include("pages.urls")),
-    # path("question/", include("questions.urls")),
-    path("", include("questions.urls")),
+    path("accounts/", include("allauth.urls")),
+    # path("", include("main.urls")),
+    # path("pages/", include("pages.urls")),
+    # # path("question/", include("questions.urls")),
+    # path("", include("questions.urls")),
+    path("", home_feed),
+    path("test/", test_view),
+    path("about/", about_page),
+    path("question/<int:id>/", Question),
+    path("question/<int:id>/vote", vote),
+    path("question/<int:id>/answer", Answer),
+    path("question/new/", new),
+    path("question/my_answer", my_answer, name="my-answers"),
+    path("question/,my_question", my_question, name="my-questions"),
 ]
