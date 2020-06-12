@@ -26,7 +26,7 @@
           <a href="/question/new/" class="btn btn-outline-success">+ New Post</a>
           <a href="/question/my_questions/" class="btn btn-outline-warning">My Questions</a>
           <a href="/question/my_answers/" class="btn btn-outline-warning">My Answers</a>
-          <span class="lead">_Hello, {{ user.username }}</span>
+
           {% else %}
           <a class="btn btn-outline-primary" href="{% url 'account_login' %}">Sign In</a>
           <a class="btn btn-outline-primary" href="{% url 'account_signup' %}">Sign Up</a>
