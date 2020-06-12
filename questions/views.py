@@ -6,15 +6,17 @@ from main.forms import Question_form, Answer_form
 # updating a vote when given.
 # added upvote and downvote funcs.
 
-
-def update_vote(user, question, vote_type):
+# vote_type could be 'upvote', 'downvote', or 'cancel_vote'
+def updateVote(user, question, vote_type):
     user.upvoted_questions.remove(question)
     user.downvoted_questions.remove(question)
-    # figure out the vote is a 'up or down vote'
+
+    # if this is an upvote, add an upvote. otherwise, add a downvote.
     if vote_type == "upvote":
-        user.upvoted_question.add(question)
+        user.upvoted_questions.add(question)
     elif vote_type == "downvote":
-        user.downvoted_question.add(question)
+        user.downvoted_questions.add(question)
+
     question.update_points()
 
 
@@ -28,13 +30,13 @@ def vote(request, id):
     if request.method != "POST":
         return HttpResponseRedirect(f"/question/{id}")
     vote_type = request.POST.get("vote_type")
-    update_vote(current_user, question, vote_type)
+    updateVote(current_user, question, vote_type)
     return HttpResponseRedirect(f"/question/{id}")
 
 
 def question(request, id):
     current_user = request.user
-    question = get_object_or_404(Question, pk=id)
+    question = Question.objects.get(pk=id)
     answers = Answer.objects.filter(question_id=id).order_by("created")
     upvoted = None
     downvoted = None
@@ -49,22 +51,20 @@ def question(request, id):
     elif current_user.id == question.user_id:
         asked_by_user = True
 
-    return render(
-        request,
-        "question.html",
-        {
-            "question": question,
-            "answers": answers,
-            "current_user": current_user,
-            "upvoted": upvoted,
-            "downvoted": downvoted,
-            "asked_by_user": asked_by_user,
-        },
-    )
+    context = {
+        "question": question,
+        "answers": answers,
+        "current_user": current_user,
+        "upvoted": upvoted,
+        "downvoted": downvoted,
+        "asked_by_user": asked_by_user,
+    }
+    return render(request, "question.html", context)
 
 
 def new(request):
     current_user = request.user
+
     if not current_user.is_authenticated:
         return HttpResponseRedirect(reverse("account_signup"))
 
@@ -80,13 +80,13 @@ def new(request):
         title=form.cleaned_data["title"],
         body=form.cleaned_data["body"],
     )
-
     q.save()
     return HttpResponseRedirect("/")
 
 
 def answer(request, id):
     current_user = request.user
+
     if not current_user.is_authenticated:
         return HttpResponseRedirect("/accounts/login")
     if not request.method == "POST":
@@ -94,13 +94,12 @@ def answer(request, id):
     form = Answer_form(request.POST)
     if not form.is_valid():
         return HttpResponseRedirect(f"/question/{id}")
-
     a = Answer(user_id=current_user.id, question_id=id, text=form.cleaned_data["text"])
     a.save()
     return HttpResponseRedirect(f"/question/{id}")
 
 
-def my_answer(request):
+def myAnswers(request):
     current_user = request.user
     answers = Answer.objects.filter(user_id=current_user.id).order_by("-created")
     answers_exist = len(answers) > 0
@@ -109,15 +108,15 @@ def my_answer(request):
         "my_answer.html",
         {
             "current_user": current_user,
+            "answers_exist": answers_exist,
             "answers": answers,
-            "answers_exists": answers_exist,
         },
     )
 
 
-def my_question(request):
+def myQuestions(request):
     current_user = request.user
-    questions = Question.objects.filter(user_id=current_user).order_by("-created")
+    questions = Question.objects.filter(user_id=current_user.id).order_by("-created")
     questions_exist = len(questions) > 0
     return render(
         request,
