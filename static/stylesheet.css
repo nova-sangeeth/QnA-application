@@ -34,3 +34,18 @@ a.done, a.done:hover {
         display: none;
     }
 }
+
+.red-square {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+.nova-container {
+    background-color: #e3f0fc;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+  }
