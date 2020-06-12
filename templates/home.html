@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container">
-    <p class="lead">Hello there, {{ user.username }}</p>
+
     {% for question in page_obj %}
     <p>
         <a href="/question/{{question.id}}">{{ question.title }} <span
-                class="text-secondary num-answers">({{ question.num_answers }} comments)</span></a>
+                class="badge badge-primary">({{ question.num_answers }} comments)</span></a>
     </p>
     {% endfor %}
     <div class="pagination" style="margin-bottom: 3; margin-top: 10">
