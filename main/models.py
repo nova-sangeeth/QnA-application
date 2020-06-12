@@ -10,21 +10,20 @@ from django.utils.datetime_safe import time
 
 class Question(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    title = models.CharField(max_length=256, null=True)
+    title = models.CharField(max_length=200, null=True)
     body = models.TextField(blank=True, null=True)
-    created = models.DateTimeField()
-    modified = models.DateTimeField
-    answers_count = models.IntegerField(default=0)
-    points = models.IntegerField(default=0)
+    created = models.DateTimeField(editable=False, null=True)
+    modified = models.DateTimeField(null=True)
+    answers_count = models.IntegerField(default=0, null=True)
+    points = models.IntegerField(default=0, null=True)
 
+    @property
     def num_answers(self):
         answers = Answer.objects.filter(question_id=self.id)
         return len(answers)
 
-    # writing a method to show how long ago the post was put up.
-
     def x_ago(self):
-        diff = time.now() - self.created
+        diff = timezone.now() - self.created
         return x_ago_helper(diff)
 
     # showing points to the user
@@ -37,12 +36,12 @@ class Question(models.Model):
     def update_points(self):
         upvotes = self.upvoted_users.distinct().count()
         downvotes = self.downvoted_users.distinct().count()
-        downvotes += self.downvoted_user.filter(is_staff=True).count() * 2
+        downvotes += self.downvoted_users.filter(is_staff=True).count() * 2
         self.points = upvotes - downvotes
         self.save()
 
     def save(self, *args, **kwargs):
-        # time stamp during saving or creating a model.
+        """ On save, update timestamps """
         if not self.id:
             self.created = timezone.now()
         self.modified = timezone.now()
@@ -57,15 +56,17 @@ class Answer(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     text = models.TextField()
     created = models.DateTimeField(editable=False, null=True)
-    modified = models.DateTimeField()
-
+    modified = models.DateTimeField(null=True)
+    # writing a method to show how long ago the post was put up.
+    @property
     def x_ago(self):
         diff = timezone.now() - self.created
         return x_ago_helper(diff)
 
     def save(self, *args, **kwargs):
+        """ On save, update timestamps """
         if not self.id:
-            self.creted = timezone.now()
+            self.created = timezone.now()
         self.modified = timezone.now()
         return super(Answer, self).save(*args, **kwargs)
 
