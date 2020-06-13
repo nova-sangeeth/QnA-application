@@ -1,38 +1,19 @@
-body {background-color: coral;}
+div#thing {
+    position: absolute;
+    top: 80px;
+    z-index: 4;
+    width: 1100px;
+    margin-left: -550px;
+    left: 50%;
+    background-color: #85ff8b ;
+    border-radius: 10px;
+  }
 
-.num-answers {
-    font-size: 14px;
-}
 
-a.done, a.done:hover {
-    color:orange !important;
-}
 
-.separator {
-    margin-left: 3;
-    margin-right: 3;
-}
+  p {
+    font-family: 'Maven Pro', sans-serif;
+    font-size: 18px;
+    
+  }
 
-.answers > hr:last-child {
-    display: none;
-}
-.answer-text {
-    white-space: break-spaces;
-}
-
-.answer-block {
-    margin-left: 10px;
-}
-
-.csqa-nav {
-    position: relative;
-    top: 1px;
-    font-size: 13;
-    margin-right: 5;
-}
-
-@media (max-width: 615px){
-    .site-title-second-half{
-        display: none;
-    }
-}
