@@ -1,0 +1,38 @@
+body {background-color: coral;}
+
+.num-answers {
+    font-size: 14px;
+}
+
+a.done, a.done:hover {
+    color:orange !important;
+}
+
+.separator {
+    margin-left: 3;
+    margin-right: 3;
+}
+
+.answers > hr:last-child {
+    display: none;
+}
+.answer-text {
+    white-space: break-spaces;
+}
+
+.answer-block {
+    margin-left: 10px;
+}
+
+.csqa-nav {
+    position: relative;
+    top: 1px;
+    font-size: 13;
+    margin-right: 5;
+}
+
+@media (max-width: 615px){
+    .site-title-second-half{
+        display: none;
+    }
+}
