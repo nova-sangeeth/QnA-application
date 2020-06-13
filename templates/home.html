@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 {% if user.is_authenticated %}
-<center>
-    <p class="display-4">Hello, {{ user.username }}</p>
-</center>
+<p class="display-4">Hello, {{ user.username }}</p>
+{% else %}
+<p class="display-4">QnA Application.</p>
+
 {% endif %}
 <div class="container">
 
