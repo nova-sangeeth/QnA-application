@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-<h5>{{question.title}}</h5>
-<div style="margin-bottom: 5px; font-size: 17px; white-space: break-spaces">
+<p class="bighead">{{ question.title }}</p>
+<div>
     <p>{{question.body | urlize }}</p>
 </div>
-<div class='text-secondary' style="font-size: 14px">
+<div class='text-secondary' style="font-size: 15px">
     posted by {{ question.user }}</span><span class="separator">|</span>{{ question.x_ago }}
     {% if not asked_by_user %}
     <span class="separator">|</span>
@@ -14,7 +14,7 @@
         {% else %}
         <input hidden name="vote_type" value="upvote">
         {% endif %}
-        {% csrf_token %}<a href="#" class="{{ upvoted }} text-secondary" onclick="upvote.submit()">upvote</a>
+        {% csrf_token %}<a href="#" class="{{ upvoted }} btn btn-primary btn-sm" onclick="upvote.submit()">upvote</a>
     </form>
     <span class="separator">|</span>
     <form name="downvote" action="/question/{{question.id}}/vote" method="post" style="display: inline">
@@ -23,11 +23,12 @@
         {% else %}
         <input hidden name="vote_type" value="downvote">
         {% endif %}
-        {% csrf_token %}<a href="#" class="{{ downvoted }} text-secondary" onclick="downvote.submit()">downvote</a>
+        {% csrf_token %}<a href="#" class="{{ downvoted }} btn btn-success btn-sm"
+            onclick="downvote.submit()">downvote</a>
     </form>
     {% endif %}
     <span class="separator">|</span>
-    <span>{{ question.points }} points</span>
+    <span class="badge badge-primary">{{ question.points }} points</span>
 </div>
 
 {% for answer in answers %}
