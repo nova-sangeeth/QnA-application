@@ -4,11 +4,13 @@
 <div class='answer-block'>
     <p class="display-4">Your Questions.</p>
     {% for question in questions %}
-    <p>
-        <a href="/question/{{question.id}}">{{ question.title }} <span
-                class="text-secondary num-answers">({{ question.num_answers }} comments)</span></a>
-    </p>
-    <hr>
+    <div class="alert alert-success">
+        <p>
+            <a href="/question/{{question.id}}">{{ question.title }} <span
+                    class="text-secondary num-answers">({{ question.num_answers }} comments)</span></a>
+        </p>
+
+    </div>
     {% endfor %}
     {% if not questions_exist %}
     <p>You haven't asked any questions yet.</p>

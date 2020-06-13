@@ -8,10 +8,12 @@
 <div class="container">
 
     {% for question in page_obj %}
-    <p>
-        <a href="/question/{{question.id}}">{{ question.title }} <span
-                class="badge badge-primary">({{ question.num_answers }} comments)</span></a>
-    </p>
+    <div class="alert alert-success">
+        <p>
+            <a href="/question/{{question.id}}">{{ question.title }} <span
+                    class="badge badge-primary">({{ question.num_answers }} comments)</span></a>
+        </p>
+    </div>
     {% endfor %}
     <div class="pagination" style="margin-bottom: 3; margin-top: 10">
         <span class="step-links">

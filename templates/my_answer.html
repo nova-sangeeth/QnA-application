@@ -2,17 +2,20 @@
 
 {% block content %}
 <div class="answers">
+    <p class="display-4">Your Answers.</p>
     {% for answer in answers %}
-    <p style="margin-bottom: 1">
-        <a href="/question/{{answer.question.id}}">{{ answer.question.title }} <span
-                class="text-secondary num-answers">({{ answer.question.num_answers }} comments)</span></a>
-    </p>
-    <div class='answer-block'>
-        <div class='text-secondary' style="font-size: 14px">{{ answer.user }}<span
-                style="margin-right: 6px; margin-left: 6px;">|</span></span>{{ answer.x_ago }}</div>
-        <div style="margin-bottom: 20px">{{ answer.text | urlize }}</div>
+    <div class="alert alert-primary">
+        <p style="margin-bottom: 1">
+            <a href="/question/{{answer.question.id}}">{{ answer.question.title }} <span
+                    class="text-secondary num-answers">({{ answer.question.num_answers }} comments)</span></a>
+        </p>
+        <div class='answer-block'>
+            <div class='text-secondary' style="font-size: 14px">{{ answer.user }}<span
+                    style="margin-right: 6px; margin-left: 6px;">|</span></span>{{ answer.x_ago }}</div>
+            <div style="margin-bottom: 20px">{{ answer.text | urlize }}</div>
+        </div>
+
     </div>
-    <hr />
     {% endfor %}
 </div>
 {% if not answers_exist %}
