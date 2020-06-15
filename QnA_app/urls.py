@@ -35,7 +35,7 @@ urlpatterns = [
     # path("", include("questions.urls")),
     path("", home_feed),
     path("test/", test_view),
-    path("profile", profile),
+    path("profile/", profile),
     path("about/", about_page),
     path("accounts/", include("allauth.urls")),
     path("question/<int:id>/", question),
