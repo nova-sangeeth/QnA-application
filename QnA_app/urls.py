@@ -23,7 +23,7 @@ from questions.views import (
     myAnswers,
     vote,
 )
-from main.views import home_feed, index, listing, test_view
+from main.views import home_feed, index, listing, test_view, profile
 from pages.views import about_page
 
 urlpatterns = [
@@ -35,6 +35,7 @@ urlpatterns = [
     # path("", include("questions.urls")),
     path("", home_feed),
     path("test/", test_view),
+    path("profile", profile),
     path("about/", about_page),
     path("accounts/", include("allauth.urls")),
     path("question/<int:id>/", question),

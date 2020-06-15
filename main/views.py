@@ -11,6 +11,10 @@ def index(request):
     return render(request, "index.html")
 
 
+def profile(request):
+    return render(request, "profile.html")
+
+
 def home_feed(request):
     current_user = request.user
     questions = Question.objects.filter(points__gt=-2).order_by("-created")
