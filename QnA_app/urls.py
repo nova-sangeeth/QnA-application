@@ -31,7 +31,7 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     # path("", include("main.urls")),
     # path("pages/", include("pages.urls")),
-    # # path("question/", include("questions.urls")),
+    # path("question/", include("questions.urls")),
     # path("", include("questions.urls")),
     path("", home_feed),
     path("test/", test_view),

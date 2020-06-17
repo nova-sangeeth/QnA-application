@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.utils import timezone
 from .helpers import x_ago_helper
-from django.utils.datetime_safe import time
+
+# from django.utils.datetime_safe import time
 
 # Create your models here.
 
