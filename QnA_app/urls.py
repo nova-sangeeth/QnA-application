@@ -24,7 +24,7 @@ from questions.views import (
     vote,
 )
 from main.views import home_feed, index, listing, test_view, profile
-from pages.views import about_page
+from pages.views import about_page, search_page
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -37,6 +37,7 @@ urlpatterns = [
     path("test/", test_view),
     path("profile/", profile),
     path("about/", about_page),
+    path("search/", search_page),
     path("accounts/", include("allauth.urls")),
     path("question/<int:id>/", question),
     path("question/<int:id>/vote", vote),
