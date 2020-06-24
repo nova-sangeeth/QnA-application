@@ -5,3 +5,8 @@ from django.shortcuts import render
 
 def about_page(request):
     return render(request, "about.html")
+
+
+def search_page(request):
+    return render(request, "search.html")
+
