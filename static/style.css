@@ -10,14 +10,14 @@ div#thing {
 }
 
 
-div#auth_thing {
+/* div#auth_thing {
   position: absolute;
   top: 80px;
   z-index: 4;
   width: 1100px;
   margin-left: -550px;
   left: 50%;
-}
+} */
 
 
 p {
