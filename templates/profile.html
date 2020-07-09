@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
-    <p class="display-4">
+<div class="container" style="top: 75px;
+        position: absolute;
+">
+    <p class="display-4" style="font-size: 45px;">
         User Profile Page.
     </p>
     <ul>
-        <li>Username: {{ user.username }}</li>
-        <li>Email: {{ user.email }}</li>
-        <li>Date Joined: {{ user.date_joined }}</li>
-        <li>Last login: {{ user.last_login }}</li>
+        <li class='lead'>Username: {{ user.username }}</li>
+        <li class='lead'>Email: {{ user.email }}</li>
+        <li class='lead'>Date Joined: {{ user.date_joined }}</li>
+        <li class='lead'>Last login: {{ user.last_login }}</li>
     </ul>
 </div>
 {% endblock content %}
