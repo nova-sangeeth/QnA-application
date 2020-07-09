@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="answers">
+<div class="container" style="position: absolute; top: 100px;">
     <p class="display-4">Your Answers.</p>
     {% for answer in answers %}
     <div class="alert alert-primary">
@@ -17,8 +17,11 @@
 
     </div>
     {% endfor %}
+    {% if not answers_exist %}
+    <div class="alert alert-primary">
+        <p class="lead" style="font-size: 30px;">You haven't answered any questions yet.</p>
+    </div>
+    {% endif %}
 </div>
-{% if not answers_exist %}
-<p>You haven't answered any questions yet.</p>
-{% endif %}
+
 {% endblock %}
