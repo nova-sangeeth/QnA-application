@@ -1,56 +1,59 @@
 {% extends "base.html" %}
 {% block content %}
-<p class="bighead">{{ question.title }}</p>
-<div>
-    <p>{{question.body | urlize }}</p>
-</div>
-<div class='text-secondary' style="font-size: 15px">
-    posted by {{ question.user }}</span><span class="separator">|</span>{{ question.x_ago }}
-    {% if not asked_by_user %}
-    <span class="separator">|</span>
-    <form name="upvote" action="/question/{{question.id}}/vote" method="post" style="display: inline">
-        {% if upvoted %}
-        <input hidden name="vote_type" value="cancel_vote">
-        {% else %}
-        <input hidden name="vote_type" value="upvote">
-        {% endif %}
-        {% csrf_token %}<a href="#" class="{{ upvoted }} btn btn-primary btn-sm" onclick="upvote.submit()">upvote</a>
-    </form>
-    <span class="separator">|</span>
-    <form name="downvote" action="/question/{{question.id}}/vote" method="post" style="display: inline">
-        {% if downvoted %}
-        <input hidden name="vote_type" value="cancel_vote">
-        {% else %}
-        <input hidden name="vote_type" value="downvote">
-        {% endif %}
-        {% csrf_token %}<a href="#" class="{{ downvoted }} btn btn-success btn-sm"
-            onclick="downvote.submit()">downvote</a>
-    </form>
-    {% endif %}
-    <span class="separator">|</span>
-    <span class="badge badge-primary">{{ question.points }} points</span>
-</div>
-
-{% for answer in answers %}
-<hr />
-<div class="container">
-    <div class='text-secondary' style="font-size: 14px">{{ answer.user }}</span><span
-            class="separator">|</span>{{ answer.x_ago }}</div>
-    <div class="answer-text" style="margin-bottom: 20px">{{ answer.text | urlize }}</div>
-</div>
-{% endfor %}
-
-<hr style="margin-bottom: 20" />
-{% if current_user.is_authenticated %}
-<form action="/question/{{question.id}}/answer" method="post">
-    {% csrf_token %}
-    <div class="form-group">
-        <textarea class="form-control" id="text" name="text" rows="7" placeholder="Type your answer here."
-            required></textarea>
+<div class="container" style="position: absolute; top: 100px;">
+    <p class="display-4" style="font-size: 40px;">{{ question.title }}</p>
+    <div>
+        <p>{{question.body | urlize }}</p>
     </div>
-    <button type="submit" class="btn btn-primary mb-2">Submit</button>
-</form>
-{% else %}
-<p class="lead"><a href="/accounts/login">Log in to answer this question</a></p>
-{% endif %}
+    <div class='text-secondary' style="font-size: 15px">
+        posted by {{ question.user }}</span><span class="separator">|</span>{{ question.x_ago }}
+        {% if not asked_by_user %}
+        <span class="separator">|</span>
+        <form name="upvote" action="/question/{{question.id}}/vote" method="post" style="display: inline">
+            {% if upvoted %}
+            <input hidden name="vote_type" value="cancel_vote">
+            {% else %}
+            <input hidden name="vote_type" value="upvote">
+            {% endif %}
+            {% csrf_token %}<a href="#" class="{{ upvoted }} btn btn-outline-primary btn-sm"
+                onclick="upvote.submit()">upvote</a>
+        </form>
+        <span class="separator">|</span>
+        <form name="downvote" action="/question/{{question.id}}/vote" method="post" style="display: inline">
+            {% if downvoted %}
+            <input hidden name="vote_type" value="cancel_vote">
+            {% else %}
+            <input hidden name="vote_type" value="downvote">
+            {% endif %}
+            {% csrf_token %}<a href="#" class="{{ downvoted }} btn btn-outline-success btn-sm"
+                onclick="downvote.submit()">downvote</a>
+        </form>
+        {% endif %}
+        <span class="separator">|</span>
+        <span class="badge badge-primary">{{ question.points }} points</span>
+    </div>
+
+    {% for answer in answers %}
+    <hr />
+    <div class="container">
+        <div class='text-secondary' style="font-size: 14px">{{ answer.user }}</span><span
+                class="separator">|</span>{{ answer.x_ago }}</div>
+        <div class="answer-text" style="margin-bottom: 20px">{{ answer.text | urlize }}</div>
+    </div>
+    {% endfor %}
+
+    <hr style="margin-bottom: 20" />
+    {% if current_user.is_authenticated %}
+    <form action="/question/{{question.id}}/answer" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <textarea class="form-control" id="text" name="text" rows="7" placeholder="Type your answer here."
+                required></textarea>
+        </div>
+        <button type="submit" class="btn btn-outline-primary mb-2">Submit</button>
+    </form>
+    {% else %}
+    <p class="lead"><a href="/accounts/login">Log in to answer this question</a></p>
+    {% endif %}
+</div>
 {% endblock %}
