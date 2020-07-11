@@ -1,19 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
 {% if user.is_authenticated %}
-<p class="display-4">Hello, {{ user.username }}</p>
+<p class="display-4" style="font-size: 50px;">Hello, {{ user.username }}</p>
 {% else %}
-<p class="display-4">QnA Application.</p>
-
+<p class="display-4" style="font-size: 50px;">QnA Application.</p>
 {% endif %}
+
 <div class="container">
 
     {% for question in page_obj %}
     <div class="alert alert-success">
-        <p>
-            <a href="/question/{{question.id}}">{{ question.title }} <span
-                    class="badge badge-primary">({{ question.num_answers }} comments)</span></a>
-        </p>
+        <div>
+            <a href="/question/{{question.id}}">{{ question.title }}
+                <span class="d-flex justify-content-end"> ({{ question.num_answers }} comments) </span>
+            </a>
+
+        </div>
     </div>
     {% endfor %}
     <div class="pagination" style="margin-bottom: 3; margin-top: 10">
@@ -22,14 +24,14 @@
             <a href="?page={{ page_obj.previous_page_number }}">&laquo; previous</a>
             {% endif %}
 
-            <span class="current text-secondary">
+            <span class="current text-secondary" ">
                 page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
             </span>
 
             {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next &raquo;</a>
-            {% endif %}
-        </span>
+            <a href=" ?page={{ page_obj.next_page_number }}">next &raquo;</a>
+                {% endif %}
+            </span>
     </div>
 </div>
 {% endblock %}
