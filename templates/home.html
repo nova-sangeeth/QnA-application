@@ -10,11 +10,11 @@
 
     {% for question in page_obj %}
     <div class="alert alert-success">
-        <div>
+        <div class='lead' style="font-size: px;">
             <a href="/question/{{question.id}}">{{ question.title }}
-                <span class="d-flex justify-content-end"> ({{ question.num_answers }} comments) </span>
             </a>
-
+            <span class="d-flex justify-content-end">({{ question.num_answers }} comments and {{ question.points }}
+                points) </span>
         </div>
     </div>
     {% endfor %}
