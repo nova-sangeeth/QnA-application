@@ -13,5 +13,6 @@
         <li class='lead'>Date Joined: {{ user.date_joined }}</li>
         <li class='lead'>Last login: {{ user.last_login }}</li>
     </ul>
+    <a class="btn btn-outline-danger" href="{% url 'account_email' %}">Change Email</a>
 </div>
 {% endblock content %}
