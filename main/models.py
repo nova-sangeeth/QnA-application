@@ -64,6 +64,19 @@ class Answer(models.Model):
         diff = timezone.now() - self.created
         return x_ago_helper(diff)
 
+    def show_points(self):
+        if self.points < 0:
+            return 0
+        else:
+            return self.points
+
+    def update_points(self):
+        upvotes = self.upvoted_users.distinct().count()
+        downvotes = self.downvoted_users.distinct().count()
+        downvotes += self.downvoted_users.filter(is_staff=True).count() * 2
+        self.points = upvotes - downvotes
+        self.save()
+
     def save(self, *args, **kwargs):
         """ On save, update timestamps """
         if not self.id:
