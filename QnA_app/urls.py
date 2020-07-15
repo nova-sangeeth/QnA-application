@@ -25,6 +25,7 @@ from questions.views import (
 )
 from main.views import home_feed, index, listing, test_view, profile
 from pages.views import about_page, search_page
+from users.views import register, edit_profile
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -35,6 +36,8 @@ urlpatterns = [
     # path("", include("questions.urls")),
     path("", home_feed),
     path("test/", test_view),
+    path("register/", register, name="register"),
+    path("edit/", edit_profile, name="edit_profile"),
     path("profile/", profile),
     path("about/", about_page),
     path("search/", search_page),
