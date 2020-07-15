@@ -58,6 +58,7 @@ class Answer(models.Model):
     text = models.TextField()
     created = models.DateTimeField(editable=False, null=True)
     modified = models.DateTimeField(null=True)
+    points = models.IntegerField(default=0, null=True)
     # writing a method to show how long ago the post was put up.
     @property
     def x_ago(self):
