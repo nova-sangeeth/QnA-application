@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from main.models import Question
+from main.models import Question, Answer
 
 from django.contrib.auth.models import User
 
@@ -17,6 +17,8 @@ class User(AbstractUser):
     downvoted_questions = models.ManyToManyField(
         Question, related_name="downvoted_users"
     )
+    upvoted_answers = models.ManyToManyField(Answer, related_name="upvoted_users")
+    downvoted_answers = models.ManyToManyField(Answer, related_name="downvoted_users")
 
 
 class user_profile(models.Model):
