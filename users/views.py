@@ -30,6 +30,6 @@ def edit_profile(request):
         if form.is_valid():
             f = form.save()
             f.save()
-        return redirect("/")
+        return redirect("profile")
 
     return render(request, "edit_profile.html", {"form": form})
