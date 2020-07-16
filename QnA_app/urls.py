@@ -38,7 +38,7 @@ urlpatterns = [
     path("test/", test_view),
     path("register/", register, name="register"),
     path("edit/", edit_profile, name="edit_profile"),
-    path("profile/", profile),
+    path("profile/", profile, name="profile"),
     path("about/", about_page),
     path("search/", search_page),
     path("accounts/", include("allauth.urls")),
