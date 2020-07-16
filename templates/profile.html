@@ -12,6 +12,12 @@
         <li class='lead'>Email: {{ user.email }}</li>
         <li class='lead'>Date Joined: {{ user.date_joined }}</li>
         <li class='lead'>Last login: {{ user.last_login }}</li>
+
+        {% for items in data  %}
+        <li class='lead'>Country: {{ items.Country }}</li>
+        <li class='lead'>Phone: {{ items.Phone }}</li>
+
+        {% endfor %}
     </ul>
     <a class="btn btn-outline-danger" href="{% url 'account_email' %}">Change Email</a>
 </div>
