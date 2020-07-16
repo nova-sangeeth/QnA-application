@@ -3,6 +3,7 @@ from .models import Question, Answer
 
 # from django.contrib.auth.models import User
 from django.core.paginator import Paginator
+from users.models import user_profile
 
 # Create your views here.
 
@@ -12,7 +13,8 @@ def index(request):
 
 
 def profile(request):
-    return render(request, "profile.html")
+    user = user_profile.objects.filter(user=request.user)
+    return render(request, "profile.html", {"data": user})
 
 
 def home_feed(request):
