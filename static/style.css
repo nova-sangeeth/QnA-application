@@ -4,7 +4,7 @@
 .container {
     width:6000px; 
     overflow: hidden; 
-    position: ;
+
  }
  hr.new1 {
     border-top: 1px solid red;
@@ -80,9 +80,18 @@ lead {
 }
 
 #rcorners2 {
-    border-radius: 25px;
+    border-radius: 20px;
     border: 2px solid #218cad;
     padding: 20px; 
     width: 750px;
     height: auto;  
+    margin-bottom: 10px;
+  }
+#rcorners1 {
+    border-radius: 20px;
+    border: 2px solid #218cad;
+    padding: 20px; 
+    width: 750px;
+    height: auto;  
+    margin-bottom: 10px;
   }
