@@ -16,7 +16,10 @@
 
     {% endfor %}
     {% if not questions_exist %}
-    <p>You haven't asked any questions yet.</p>
-    {% endif %}
+    <div>
+        <a class="lead" href="{%  url 'new'  %}" style="font-size: 30px;  text-decoration: none;">You haven't asked any
+            question(s)
+            yet.</a>
+    </div> {% endif %}
 </div>
 {% endblock %}
