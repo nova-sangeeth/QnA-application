@@ -1,25 +1,31 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container" style="position: absolute; top: 100px;">
-    <p class="display-4" style="font-size: 45px;">Your Answers.</p>
+<div class="container">
+    <p class="" style="font-size: 45px;">Your Answers.</p>
     {% for answer in answers %}
-    <div class="alert alert-primary">
+    <div id="rcorners2">
         <p style="margin-bottom: 1">
             <a href="/question/{{answer.question.id}}">{{ answer.question.title }} <span
                     class="text-secondary num-answers">({{ answer.question.num_answers }} comments)</span></a>
         </p>
-        <div class='answer-block'>
+        <div class='answer-block' class="div-border">
             <div class='text-secondary' style="font-size: 14px">{{ answer.user }}<span
                     style="margin-right: 6px; margin-left: 6px;">|</span></span>{{ answer.x_ago }}</div>
-            <div style="margin-bottom: 20px">{{ answer.text | urlize }}</div>
+            <div class='' style="margin-bottom: 20px; border: 1px;color: aliceblue;">
+                <!-- <div class='' style="margin-bottom: 20px"></div> -->
+                <p>{{ answer.text }}</p>
+            </div>
         </div>
-
+    </div>
+    <div>
+        <p></p>
     </div>
     {% endfor %}
     {% if not answers_exist %}
-    <div class="alert alert-primary">
-        <p class="lead" style="font-size: 30px;">You haven't answered any questions yet.</p>
+    <div>
+        <a class="lead" href="/" style="font-size: 30px;  text-decoration: none;">You haven't answered any questions
+            yet.</a>
     </div>
     {% endif %}
 </div>

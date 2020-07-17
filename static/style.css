@@ -1,0 +1,88 @@
+    
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.container {
+    width:6000px; 
+    overflow: hidden; 
+    position: ;
+ }
+ hr.new1 {
+    border-top: 1px solid red;
+  }
+
+h1, h2, h3, h4 {
+    color: aliceblue;
+    font-family: "Montserrat", sans-serif;
+    text-decoration: none;
+}
+label {
+    font-family: "Montserrat", sans-serif ;
+    color: aliceblue;
+}
+p {
+    color: whitesmoke;
+    font-family: "Montserrat", sans-serif;
+    text-decoration: none;
+}
+
+*,body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(32, 30, 30);
+}
+
+li , a , button {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: whitesmoke;
+    text-decoration: none;
+    
+}
+header {
+    display:flex ;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%
+}
+
+
+button {
+    /* margin-left: 20px; */
+    padding: 9px 25px;
+    background-color: rgba(0, 136, 169, 1);
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: all0.3s ease Os;
+
+}
+
+button:hover {
+    background-color: rgba(0,136,169,0.8)
+}
+
+lead {
+    color: aliceblue;
+}
+
+.container-x {
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#rcorners2 {
+    border-radius: 25px;
+    border: 2px solid #218cad;
+    padding: 20px; 
+    width: 750px;
+    height: auto;  
+  }

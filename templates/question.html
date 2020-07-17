@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container" style="position: absolute; top: 100px;">
-    <p class="display-4" style="font-size: 40px;">{{ question.title }}</p>
+    <p class="" style="font-size: 40px; color: aquamarine;">{{ question.title }}</p>
     <div>
-        <p class="lead">{{question.body | urlize }}</p>
+        <p class="">{{question.body | urlize }}</p>
     </div>
     <div class='text-secondary' style="font-size: 15px; ">
         posted by {{ question.user }} </span><span class="separator">| </span>{{ question.x_ago }}
@@ -35,9 +35,10 @@
 
     {% for answer in answers %}
     <hr />
-    <div class="container">
-        <div class="lead" style="margin-bottom: 5px">{{ answer.text | urlize }}</div>
-        <div class="alert alert-secondary" class='text-secondary' style="font-size: 12px; width: 300px;">
+    <div class="">
+        <div class="" style="margin-bottom: 5px"></div>
+        <p>{{ answer.text  }}</p>
+        <div class='text-secondary' style="font-size: 12px; width: 300px;">
             Answered by: {{ answer.user }}<span class="separator"> | </span>{{ answer.x_ago }}</div>
     </div>
     {% endfor %}
@@ -48,7 +49,7 @@
         {% csrf_token %}
         <div class="form-group">
             <textarea class="form-control" id="text" name="text" rows="7" style="border-radius: 15px; width: 750px;"
-                placeholder=" Type your answer here." required></textarea>
+                placeholder=" Type your answer here." ;" required></textarea>
         </div>
         <button type="submit" class="btn btn-outline-primary mb-2">Submit</button>
     </form>
