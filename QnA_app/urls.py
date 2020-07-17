@@ -45,7 +45,7 @@ urlpatterns = [
     path("question/<int:id>/", question),
     path("question/<int:id>/vote", vote),
     path("question/<int:id>/answer", answer),
-    path("question/new/", new),
+    path("question/new/", new, name="new"),
     path("question/my_answers/", myAnswers, name="my-answers"),
     path("question/my_questions/", myQuestions, name="my-questions"),
 ]
