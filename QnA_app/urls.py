@@ -15,45 +15,34 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from main.views import homeFeedView, testView
+
+# from pages.views import aboutPageView, searchView
 from questions.views import (
-    question,
-    new,
-    answer,
-    myQuestions,
-    myAnswers,
-    vote,
-    question_vote,
-    answer_vote,
-    updateVote,
+    questionView,
+    newView,
+    answerView,
+    myQuestionsView,
+    myAnswersView,
+    questionVoteView,
+    answerVoteView,
 )
-from main.views import home_feed, index, listing, test_view, profile
-from pages.views import about_page, search_page
-from users.views import register, edit_profile
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", homeFeedView),
+    path("test/", testView),
+    # path("leaderboard/", leaderboardView),
+    # path("search/", searchView, name="search"),
+    # path("about/", aboutPageView),
     path("accounts/", include("allauth.urls")),
-    # path("", include("main.urls")),
-    # path("pages/", include("pages.urls")),
-    # path("question/", include("questions.urls")),
-    # path("", include("questions.urls")),
-    path("", home_feed),
-    path("test/", test_view),
-    path("register/", register, name="register"),
-    path("edit/", edit_profile, name="edit_profile"),
-    path("profile/", profile, name="profile"),
-    path("about/", about_page),
-    path("search/", search_page),
-    path("accounts/", include("allauth.urls")),
-    # ---------------------------------------------------
-    path("question/<int:id>/", question),
-    path("question/<int:id>/answer", answer),
-    # ---------------------------------------------------
-    path("question/<int:id>/vote", question_vote),
-    path("answer/<int:id>/vote", answer_vote),
-    path("question/<int:id>/vote", vote),
-    # ---------------------------------------------------
-    path("question/new/", new, name="new"),
-    path("question/my_answers/", myAnswers, name="my-answers"),
-    path("question/my_questions/", myQuestions, name="my-questions"),
+    path("question/<int:id>/", questionView),
+    path("question/<int:id>/vote", questionVoteView),
+    path("answer/<int:id>/vote", answerVoteView),
+    path("question/<int:id>/answer", answerView),
+    path("question/new/", newView),
+    path("question/my_answers/", myAnswersView, name="my-answers"),
+    path("question/my_questions/", myQuestionsView, name="my-questions"),
 ]
+
