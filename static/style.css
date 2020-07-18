@@ -63,6 +63,23 @@ button:hover {
     background-color: rgba(0,136,169,0.8)
 }
 
+.button_red {
+    /* margin-left: 20px; */
+    padding: 9px 25px;
+    background-color: rgb(13, 226, 137);
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: 0.5s ease 0s;
+    text-decoration: none;
+
+}
+
+.button_red:hover {
+    background-color: rgba(0, 169, 127, 0.8)
+}
+
+
 lead {
     color: aliceblue;
 }
