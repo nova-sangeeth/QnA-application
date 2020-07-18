@@ -17,26 +17,57 @@ def updateVote(user, question, vote_type, question_or_answer):
 
     upvoted_targets.remove(target)
     downvoted_targets.remove(target)
+    target.update_points()
+    return target.points
 
 
-def vote(request, id):
+def vote(request, id, question_or_answer):
     current_user = request.user
-    question = Question.objects.get(pk=id)
+    if question_or_answer == "question":
+        target = Question.objects.get(pk=id)
+    else:
+        target = Answer.objects.get(pk=id)
+
     if not current_user.is_authenticated:
         return HttpResponseRedirect(reverse("account_signup"))
-    if current_user.id == question.user_id:
+    if current_user.id == target.user_id:
         return HttpResponseRedirect(f"/question/{id}")
     if request.method != "POST":
         return HttpResponseRedirect(f"/question/{id}")
     vote_type = request.POST.get("vote_type")
+    points = updateVote(current_user, target, vote_type, question_or_answer)
+    if question_or_answer == "answer":
+        target.user.update_points()
     updateVote(current_user, question, vote_type)
-    return HttpResponseRedirect(f"/question/{id}")
+    # return render(f"/question/{id}")
+    return render(request, {"vote_type": vote_type, "points": points})
+
+
+def question_vote(id, request):
+    return vote(request, id, "question")
+
+
+def answer_vote(id, request):
+    return vote(request, id, "answer")
 
 
 def question(request, id):
     current_user = request.user
     question = Question.objects.get(pk=id)
     answers = Answer.objects.filter(question_id=id).order_by("created")
+
+    # for answer in Answer:
+    upvoted = False
+    downvoted = False
+    if not current_user.is_authenticated:
+        pass
+    elif current_user.upvoted_answers.filter(id=answer.id).count() > 0:
+        upvoted = True
+    elif current_user.downvoted_answers.filter(id=answer.id).count() > 0:
+        upvoted = True
+    """
+    Question.
+    """
     upvoted = None
     downvoted = None
     asked_by_user = False
@@ -44,9 +75,9 @@ def question(request, id):
     if not current_user.is_authenticated:
         pass
     elif current_user.upvoted_questions.filter(id=question.id).count() > 0:
-        upvoted = "done"
+        upvoted = True
     elif current_user.downvoted_questions.filter(id=question.id).count() > 0:
-        downvoted = "done"
+        downvoted = True
     elif current_user.id == question.user_id:
         asked_by_user = True
 
@@ -54,6 +85,7 @@ def question(request, id):
         "question": question,
         "answers": answers,
         "current_user": current_user,
+        "points": question.points,
         "upvoted": upvoted,
         "downvoted": downvoted,
         "asked_by_user": asked_by_user,
