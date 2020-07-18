@@ -25,6 +25,7 @@ class user_profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     Country = models.CharField(max_length=64, null=True)
     Phone = models.IntegerField(null=True)
+    Date_of_Birth = models.DateField(auto_now=False, auto_now_add=False, null=True)
 
     def __str__(self):
         return self.user
