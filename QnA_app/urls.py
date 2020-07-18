@@ -22,6 +22,9 @@ from questions.views import (
     myQuestions,
     myAnswers,
     vote,
+    question_vote,
+    answer_vote,
+    updateVote,
 )
 from main.views import home_feed, index, listing, test_view, profile
 from pages.views import about_page, search_page
@@ -42,9 +45,14 @@ urlpatterns = [
     path("about/", about_page),
     path("search/", search_page),
     path("accounts/", include("allauth.urls")),
+    # ---------------------------------------------------
     path("question/<int:id>/", question),
-    path("question/<int:id>/vote", vote),
     path("question/<int:id>/answer", answer),
+    # ---------------------------------------------------
+    path("question/<int:id>/vote", question_vote),
+    path("answer/<int:id>/vote", answer_vote),
+    path("question/<int:id>/vote", vote),
+    # ---------------------------------------------------
     path("question/new/", new, name="new"),
     path("question/my_answers/", myAnswers, name="my-answers"),
     path("question/my_questions/", myQuestions, name="my-questions"),
