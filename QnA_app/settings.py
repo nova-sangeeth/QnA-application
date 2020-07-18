@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     # django_forms
     "crispy_forms",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
