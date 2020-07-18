@@ -7,17 +7,16 @@ from main.forms import Question_form, Answer_form
 # added upvote and downvote funcs.
 
 # vote_type could be 'upvote', 'downvote', or 'cancel_vote'
-def updateVote(user, question, vote_type):
-    user.upvoted_questions.remove(question)
-    user.downvoted_questions.remove(question)
+def updateVote(user, question, vote_type, question_or_answer):
+    if question_or_answer == "question":
+        upvoted_targets = user.upvoted_questions
+        downvoted_targets = user.downvoted_questions
+    else:
+        upvoted_targets = user.upvoted_answers
+        downvoted_targets = user.downvoted_answers
 
-    # if this is an upvote, add an upvote. otherwise, add a downvote.
-    if vote_type == "upvote":
-        user.upvoted_questions.add(question)
-    elif vote_type == "downvote":
-        user.downvoted_questions.add(question)
-
-    question.update_points()
+    upvoted_targets.remove(target)
+    downvoted_targets.remove(target)
 
 
 def vote(request, id):
