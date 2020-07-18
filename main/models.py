@@ -17,6 +17,7 @@ class Question(models.Model):
     modified = models.DateTimeField(null=True)
     answers_count = models.IntegerField(default=0, null=True)
     points = models.IntegerField(default=0, null=True)
+    hidden = models.BooleanField(default=False)
 
     @property
     def num_answers(self):
@@ -59,6 +60,7 @@ class Answer(models.Model):
     created = models.DateTimeField(editable=False, null=True)
     modified = models.DateTimeField(null=True)
     points = models.IntegerField(default=0, null=True)
+    hidden = models.BooleanField(default=False)
     # writing a method to show how long ago the post was put up.
     @property
     def x_ago(self):
