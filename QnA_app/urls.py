@@ -22,8 +22,8 @@ from questions.views import (
     questionView,
     newView,
     answerView,
-    myQuestionsView,
-    myAnswersView,
+    myQuestions,
+    myAnswers,
     questionVoteView,
     answerVoteView,
 )
@@ -39,9 +39,9 @@ urlpatterns = [
     path("question/<int:id>/vote", questionVoteView),
     path("answer/<int:id>/vote", answerVoteView),
     path("question/<int:id>/answer", answerView),
-    path("question/new/", newView),
-    path("question/my_answers", myAnswersView, name="my-answers"),
-    path("question/my_questions", myQuestionsView, name="my-questions"),
+    path("question/new/", newView, name="new"),
+    path("question/my_answers/", myAnswers, name="my-answers"),
+    path("question/my_questions/", myQuestions, name="my-questions"),
     path("register/", register, name="register"),
     path("edit_profile/", edit_profile, name="edit_profile"),
 ]
