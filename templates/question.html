@@ -110,11 +110,12 @@
       <div class="" v-html="answer.text_html" style="color: white;"></div>
       <div class='text-secondary answer-sub'>
         <span>[[ answer.user ]]</span>
-        <span class="separator">|</span>
+        
         <span>[[ answer.x_ago ]]</span>
         <span class="separator">|</span>
         <span v-if="answer.user != '{{current_user.username}}'">
           <a href="javascript:void(0)" v-on:click="vote('upvote', answer.upvoted, '/answer/' + [[answer.id]] + '/vote')" class="text-secondary" :class="[[answer.upvoted ? 'done' : '']]">upvote</a>
+          
           <span class="separator">|</span>
           <a href="javascript:void(0)" v-on:click="vote('downvote', answer.downvoted, '/answer/' + [[answer.id]] + '/vote')" class="text-secondary" :class="[[answer.downvoted ? 'done' : '']]">downvote</a>
           <span class="separator">|</span>
