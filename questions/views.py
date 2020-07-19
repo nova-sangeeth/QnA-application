@@ -145,35 +145,31 @@ def answerView(request, id):
     return HttpResponseRedirect(f"/question/{id}")
 
 
-def myAnswersView(request):
+def myAnswers(request):
     current_user = request.user
     answers = Answer.objects.filter(user_id=current_user.id).order_by("-created")
     answers_exist = len(answers) > 0
-    paginator = Paginator(answers, 10)
-    page_number = request.GET.get("page")
-    page_obj = paginator.get_page(page_number)
     return render(
         request,
-        "my_answers.html",
+        "my_answer.html",
         {
             "current_user": current_user,
             "answers_exist": answers_exist,
-            "page_obj": page_obj,
+            "answers": answers,
         },
     )
 
 
-def myQuestionsView(request):
+def myQuestions(request):
     current_user = request.user
     questions = Question.objects.filter(user_id=current_user.id).order_by("-created")
     questions_exist = len(questions) > 0
     return render(
         request,
-        "my_questions.html",
+        "my_question.html",
         {
             "current_user": current_user,
             "questions": questions,
             "questions_exist": questions_exist,
         },
     )
-
