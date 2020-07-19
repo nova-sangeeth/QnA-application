@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from .models import Answer, Question
-from django.utils.html import escape
+from django.utils.html import escape, urlize
+from .helpers import x_ago_helper
+from django.utils import timezone
 
 
 class QuestionSerializer(serializers.ModelSerializer):
