@@ -45,7 +45,11 @@ header {
     display:flex ;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 1%
+    /* padding: 30px 1% */
+    padding-top: 10px;
+    padding-right: 1%;
+    padding-bottom: 50px;
+    padding-left: 1%;
 }
 
 
@@ -116,3 +120,13 @@ button:hover {
     height: auto;  
     margin-bottom: 10px;
   }
+
+.badge {
+    display: inline-block;
+    min-width: 5px; /* pixel unit */
+    padding: 5px 5px; /* pixel unit */
+    border-radius: 15%;
+    font-size: 11px;
+    text-align: center;
+    background:transparent;
+}
