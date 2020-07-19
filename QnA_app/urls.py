@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from main.views import homeFeedView, testView
+from main.views import homeFeedView
 
 # from pages.views import aboutPageView, searchView
 from questions.views import (
@@ -33,7 +33,7 @@ from users.views import register, edit_profile
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", homeFeedView),
-    path("test/", testView),
+    # path("test/", testView),
     path("accounts/", include("allauth.urls")),
     path("question/<int:id>/", questionView),
     path("question/<int:id>/vote", questionVoteView),
