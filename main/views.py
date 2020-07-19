@@ -36,8 +36,7 @@ def homeFeedView(request):
     return render(request, "home.html", context)
 
 
-def testView(request):
-    current_user = request.user
-    context = {"username": current_user.username, "current_user": current_user}
-    return render(request, "test.html", context)
+# def testView(request):
+#     current_user = request.user
+#     return render(request, "test.html", context)
 
