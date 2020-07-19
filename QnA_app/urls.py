@@ -27,6 +27,7 @@ from questions.views import (
     questionVoteView,
     answerVoteView,
 )
+from users.views import register, edit_profile
 
 
 urlpatterns = [
@@ -41,5 +42,7 @@ urlpatterns = [
     path("question/new/", newView),
     path("question/my_answers/", myAnswersView, name="my-answers"),
     path("question/my_questions/", myQuestionsView, name="my-questions"),
+    path("register/", register, name="register"),
+    path("edit_profile/", edit_profile, name="edit_profile"),
 ]
 
