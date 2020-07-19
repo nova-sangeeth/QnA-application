@@ -29,7 +29,8 @@ p {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: rgb(32, 30, 30);
+    /* background-color: rgb(32, 30, 30); */
+    background-color: rgb(19, 19, 19);
 }
 
 li , a , button {
@@ -44,7 +45,7 @@ header {
     display:flex ;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 10%
+    padding: 30px 1%
 }
 
 
@@ -80,7 +81,7 @@ button:hover {
 }
 
 
-lead {
+.lead {
     color: aliceblue;
 }
 
@@ -95,7 +96,10 @@ lead {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.container {
+    width: 100%;
 
+}
 #rcorners2 {
     border-radius: 20px;
     border: 2px solid #218cad;
