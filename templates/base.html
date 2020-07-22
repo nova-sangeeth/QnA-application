@@ -28,7 +28,9 @@
 
 
 
-<body class="body">
+<!-- <body class="body"> -->
+
+<body id='page-container'>
   <header>
     <div>
       <a style="font-size: 20px ; text-decoration: none;" href="/">QnA-Application</a>
@@ -52,11 +54,11 @@
     </div>
     {% endif %}
   </header>
-  <div class="container" id="">
+  <div id="content-wrap">
     {% block body %}
 
     {% if messages %}
-    <div>
+    <div id='footer'>
       <display>Messages:</display>
       <ul>
         {% for message in messages %}
@@ -73,9 +75,11 @@
     {% endblock %}
     {% block extra_body %}
     {% endblock %}
+
   </div>
 
 </body>
+
 <script>
   axios.defaults.xsrfCookieName = 'csrftoken';
   axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
