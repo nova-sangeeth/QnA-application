@@ -7,9 +7,11 @@
     font-size: 20px;
 }
 
+.container {
+    width:6000px; 
+    overflow: hidden; 
 
-
- 
+ }
  hr.new1 {
     border-top: 1px solid red;
   }
@@ -29,16 +31,13 @@ p {
     text-decoration: none;
 }
 
-*,body { 
-    box-sizing: border-box; 
-     margin: 0; 
-     padding: 0; 
-     position: relative; 
-     padding-bottom: 6rem; 
-     min-height: 100%; 
-     background-color: rgb(32, 30, 30); 
-     background-color: rgb(19, 19, 19);
- }
+*,body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* background-color: rgb(32, 30, 30); */
+    background-color: rgb(19, 19, 19);
+}
 
 li , a , button {
     font-family: "Montserrat", sans-serif;
@@ -138,24 +137,3 @@ button:hover {
     text-align: center;
     /* background:transparent; */
 }
-
-
-
-
-
-  #page-container {
-    position: relative;
-    min-height: 100vh;
-  }
-  
-  #content-wrap {
-    padding-bottom: 2.5rem;    /* Footer height */
-  }
-  
-  #footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 2.5rem;   
-    text-align: center;         /* Footer height */
-  }
