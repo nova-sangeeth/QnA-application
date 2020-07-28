@@ -7,11 +7,9 @@
     font-size: 20px;
 }
 
-.container {
-    width:6000px; 
-    overflow: hidden; 
 
- }
+
+ 
  hr.new1 {
     border-top: 1px solid red;
   }
