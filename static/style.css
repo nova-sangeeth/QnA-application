@@ -52,6 +52,8 @@ header {
     justify-content: space-between;
     align-items: center;
     /* padding: 30px 1% */
+    position: sticky;
+    top: 0;
     padding-top: 10px;
     padding-right: 1%;
     padding-bottom: 50px;
