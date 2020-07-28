@@ -30,6 +30,7 @@
 
 
 <body id='page-container'>
+
   <header>
     <div>
       <a style="font-size: 20px ; text-decoration: none;" href="/">QnA-Application</a>
@@ -54,30 +55,30 @@
     {% endif %}
   </header>
   <div class="container">
-  <div id="content-wrap">
-    {% block body %}
+    <div id="content-wrap">
+      {% block body %}
 
-    {% if messages %}
-    <div id='footer'>
-      <display>Messages:</display>
-      <ul>
-        {% for message in messages %}
-        <p class="lead"> {{message}}</p>
-        {% endfor %}
-      </ul>
+      {% if messages %}
+      <div id='footer'>
+        <display>Messages:</display>
+        <ul>
+          {% for message in messages %}
+          <p class="lead"> {{message}}</p>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+
+      {% block content %}
+      {% endblock %}
+      {% endblock %}
+      {% block extra_body %}
+      {% endblock %}
+
     </div>
-    {% endif %}
-
-
-    {% block content %}
-    <div class="container"></div>
-    {% endblock %}
-    {% endblock %}
-    {% block extra_body %}
-    {% endblock %}
 
   </div>
-
 </body>
 
 <script>
