@@ -139,3 +139,13 @@ button:hover {
     text-align: center;
     /* background:transparent; */
 }
+
+footer {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  height: 45px;
+  justify-content: center;
+  align-items: center;
+
+}

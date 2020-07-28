@@ -1,0 +1,7 @@
+  <footer>
+      <div>
+        <!-- <a href="/question/new/" class="btn btn-outline-success">+ New Post</a> -->
+        <a href="about" class="small_button">About</a>
+        <a href="https://github.com/" class="small_button">Github</a>
+      </div>
+    </footer>
