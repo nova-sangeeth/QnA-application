@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="container">
+<div id="mainArticle">
 
     {% for question in page_obj %}
     <div class="" id="rcorners1">
-        <div class='' style="font-size: px;color: white;">
+        <div class='' style="font-size: px;color: rgb(54, 54, 54);">
             <a style=" text-decoration: none;" href="/question/{{question.id}}">{{ question.title }}
                 <span class="d-flex justify-content-end">({{ question.num_answers }} comments and
                     {{ question.points }}
