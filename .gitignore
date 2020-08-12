@@ -8,7 +8,7 @@ db.sqlite3-journal
 
   
 # Byte-compiled / optimized / DLL files
-__pycache__/
+__pycache__
 *.py[cod]
 *$py.class
 
@@ -24,4 +24,6 @@ env.bak/
 venv.bak/
 
 #.vscode
-.vscode 
+.vscode
+ # Cython debug symbols
+cython_debug/
