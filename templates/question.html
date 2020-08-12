@@ -4,7 +4,7 @@
 {% block content %}
 <div id="question">
     <p>{{question.title}}</p>
-    <div style='color: aliceblue;'>{{question.body | urlize }}</div>
+    <div style='color: rgb(41, 92, 138);'>{{question.body | urlize }}</div>
     <div class='text-secondary' style="font-size: 14px">
         posted by {{ question.user }}</span><span class="separator">|</span>{{ question.x_ago }}
         {% if not asked_by_user %}
@@ -120,7 +120,7 @@
   <div>
     <hr class='answer-hr'/>
     <div class=''>
-      <div class="" v-html="answer.text_html" style="color: white;"></div>
+      <div class="" v-html="answer.text_html" style="color: black;"></div>
       <div class='text-secondary answer-sub'>
         <span>[[ answer.user ]]</span>
         
