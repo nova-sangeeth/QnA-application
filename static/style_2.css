@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+body { 
+  display: grid;
+  font-family: "Montserrat", sans-serif;
+  grid-template-areas: 
+    "header header header"
+    "nav article ads"
+    "footer footer footer";
+  grid-template-rows: 80px 1fr 70px;  
+  grid-template-columns: 20% 1fr 15%;
+  grid-row-gap: 10px;
+  grid-column-gap: 10px;
+  height: 100vh;
+  margin: 0;
+  padding: 1.2rm;
+  }  
+header, footer, article, nav,div {
+  padding: 1.2em;
+  border-radius: 10px;
+  background: whitesmoke;
+  }
+#pageHeader {
+  grid-area: header;
+  justify-content: space-between;
+  display: flex;
+  }
+#pageFooter {
+  grid-area: footer;
+  /* position: absolute; */
+  }
+#mainArticle { 
+  grid-area: article;      
+  }
+#mainNav { 
+  grid-area: nav; 
+  }
+#siteAds { 
+  grid-area: ads; 
+  } 
+
+/* Stack the layout on small devices/viewports. */
+@media all and (max-width: 575px) {
+  body { 
+    grid-template-areas: 
+      "header"
+      "article"
+      "ads"
+      "nav"
+      "footer";
+    grid-template-rows: 80px 1fr 70px 1fr 70px;  
+    grid-template-columns: 1fr;
+ }
+
+}
+.title_logo {
+    font-size: 20px;
+    font-family: "Montserrat";
+    font-weight: bold;
+}
+
+#rcorners1 {
+    border-radius: 20px;
+    border: 2px solid #218cad;
+    /* padding: 20px;  */
+    width: auto;
+    height: auto;  
+    margin-bottom: 10px;
+  }     
+
+#rcorners2 {
+    border-radius: 20px;
+    border: 2px solid #218cad;
+    padding: 20px; 
+    width: 750px;
+    height: auto;  
+    margin-bottom: 10px;
+  }
+
+  .container-x {
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  button {
+    /* margin-left: 20px; */
+    padding: 9px 25px;
+    background-color: rgba(0, 136, 169, 1);
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: all0.3s ease Os;
+
+}
+
+button:hover {
+    background-color: rgba(0,136,169,0.8)
+}
