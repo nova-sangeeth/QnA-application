@@ -166,3 +166,15 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 AUTH_USER_MODEL = "users.User"
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+
+if os.getcwd() == "/app:":
+    db_from_env = dj_database_url.config(con_max_age=500)
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PHOTO", "https")
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    DEBUG = True
+
+if "DATABASE_URL" in os.environ:
+    DATABASES = {"default": dj_database_url.config()}
