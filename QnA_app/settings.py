@@ -68,6 +68,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = "QnA_app.urls"
@@ -160,17 +161,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = "/static/"
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+
+STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
-AUTH_USER_MODEL = "users.User"
-
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
+AUTH_USER_MODEL = "users.User"
 
+# Heroku Configs
 if os.getcwd() == "/app:":
     db_from_env = dj_database_url.config(con_max_age=500)
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PHOTO", "https")
