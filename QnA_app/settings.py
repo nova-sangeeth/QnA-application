@@ -27,7 +27,12 @@ SECRET_KEY = ")wy83wi-8^1&dr!ww3pgf8-=80)!ia8c#kc17z3z-21fgu!$bc"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "0.0.0.0",
+    "localhost",
+    "127.0.0.1",
+    "redditcloneqna.herokuapp.com",
+]
 
 
 # Application definition
